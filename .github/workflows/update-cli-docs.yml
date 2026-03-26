@@ -21,14 +21,14 @@ jobs:
         with:
           node-version: "lts/*"
 
-      - name: Install Claude Code
-        run: npm install -g @anthropic-ai/claude-code
+      - name: Install Codex CLI
+        run: npm install -g @openai/codex
 
-      - name: Run document-aiclis skill
+      - name: Run document-aiclis update
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.CODEX_API_KEY }}
         run: |
-          claude -p "Use the /document-aiclis skill to update the README.md with the latest versions and slash commands for all 4 AI CLIs. Check the npm registry for version updates and the official vendor documentation for slash command changes. Only update what has actually changed." --allowedTools "WebFetch,Read,Edit,Write,Bash" --max-turns 25
+          codex exec "Read the skill at .claude/skills/document-aiclis/SKILL.md and follow its update procedure to update README.md with the latest versions and slash commands for all 4 AI CLIs. Check the npm registry for version updates and the official vendor documentation for slash command changes. Only update what has actually changed." --full-auto
 
       - name: Check for changes
         id: changes
@@ -49,5 +49,5 @@ jobs:
 
           Automated weekly update via document-aiclis skill.
 
-          Co-Authored-By: Claude Code <noreply@anthropic.com>"
+          Co-Authored-By: Codex CLI <noreply@openai.com>"
           git push
