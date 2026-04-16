@@ -42,6 +42,19 @@ jobs:
             exit 1
           fi
 
+      - name: Log in to Codex with API key
+        env:
+          OPENAI_API_KEY: ${{ secrets.CODEX_API_KEY }}
+        run: |
+          codex login --api-key "$OPENAI_API_KEY"
+          echo "--- auth.json (redacted) ---"
+          if [ -f "$HOME/.codex/auth.json" ]; then
+            sed 's/"OPENAI_API_KEY": *"[^"]*"/"OPENAI_API_KEY": "***"/' "$HOME/.codex/auth.json"
+          else
+            echo "::error::codex login did not create ~/.codex/auth.json"
+            exit 1
+          fi
+
       - name: Run document-aiclis update
         env:
           OPENAI_API_KEY: ${{ secrets.CODEX_API_KEY }}
