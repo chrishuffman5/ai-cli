@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "lts/*"
+          node-version: "24"
 
       - name: Install Codex CLI
         run: npm install -g @openai/codex
@@ -61,6 +61,7 @@ jobs:
         run: |
           codex exec \
             -c preferred_auth_method=apikey \
+            -c sandbox_workspace_write.network_access=true \
             --full-auto \
             "Read the skill at .claude/skills/document-aiclis/SKILL.md and follow its update procedure to update README.md with the latest versions and slash commands for all 4 AI CLIs. Check the npm registry for version updates and the official vendor documentation for slash command changes. Only update what has actually changed."
 
