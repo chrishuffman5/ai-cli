@@ -46,7 +46,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.CODEX_API_KEY }}
         run: |
-          codex login --api-key "$OPENAI_API_KEY"
+          printenv OPENAI_API_KEY | codex login --with-api-key
           echo "--- auth.json (redacted) ---"
           if [ -f "$HOME/.codex/auth.json" ]; then
             sed 's/"OPENAI_API_KEY": *"[^"]*"/"OPENAI_API_KEY": "***"/' "$HOME/.codex/auth.json"
