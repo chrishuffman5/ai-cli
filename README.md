@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.36 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.125.0 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.119 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.39.1 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.40 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.128.0 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.126 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.40.1 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.36
+**Version:** v1.0.40
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -49,7 +49,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/fleet [PROMPT]` | Enable parallel subagent execution of parts of a task |
 | `/help` | Show help for interactive commands |
 | `/ide` | Connect to an IDE workspace |
-| `/init` | Initialize Copilot custom instructions for a repository |
+| `/init` | Initialize Copilot custom instructions and agentic features for a repository |
 | `/instructions` | View and toggle custom instruction files |
 | `/keep-alive [on\|busy\|NUMBERm\|NUMBERh]` | Prevent the machine from sleeping while you work |
 | `/list-dirs` | Display all directories with file access permissions |
@@ -61,19 +61,19 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/plan [PROMPT]` | Create an implementation plan before coding |
 | `/plugin [marketplace\|install\|uninstall\|update\|list] [ARGS...]` | Manage plugins and marketplaces |
 | `/pr [view\|create\|fix\|auto]` | Manage pull requests for the current branch |
-| `/remote` | Enable remote access to this session from GitHub.com and GitHub Mobile |
+| `/remote [on\|off]` | Show remote control status, enable remote steering, or end the remote connection |
 | `/rename [NAME]` | Rename the current session (auto-generates a name if omitted) |
 | `/research TOPIC` | Run deep research with GitHub search and web sources |
 | `/reset-allowed-tools` | Reset the list of allowed tools |
 | `/restart` | Restart the CLI while preserving the current session |
-| `/resume [VALUE]`, `/continue` | Switch to or resume a different session |
+| `/resume [SESSION-ID]`, `/continue [SESSION-ID]` | Switch to or resume a different session |
 | `/review [PROMPT]` | Run the code review agent to analyze changes |
 | `/session [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]`, `/sessions [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]` | Show session information and manage sessions |
 | `/share [file\|html\|gist] [session\|research] [PATH]`, `/export [file\|html\|gist] [session\|research] [PATH]` | Share the session to a Markdown file, interactive HTML file, or GitHub gist |
 | `/skills [list\|info\|add\|remove\|reload] [ARGS...]` | Manage skills for enhanced capabilities |
 | `/statusline`, `/footer` | Configure which items appear in the status line |
-| `/tasks` | View and manage background tasks |
-| `/terminal-setup` | Configure terminal for multiline input |
+| `/tasks` | View and manage background tasks (subagents and shell sessions) |
+| `/terminal-setup` | Configure terminal keybindings for multiline input |
 | `/theme [default\|dim\|high-contrast\|colorblind]` | View or set the color mode |
 | `/undo`, `/rewind` | Rewind the last turn and revert file changes |
 | `/update`, `/upgrade` | Update the CLI to the latest version |
@@ -85,7 +85,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 ## OpenAI Codex CLI
 
-**Version:** v0.125.0
+**Version:** v0.128.0
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -111,6 +111,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/feedback` | Send logs to the Codex maintainers |
 | `/fork` | Fork the current conversation into a new thread |
 | `/init` | Generate an `AGENTS.md` scaffold in the current directory |
+| `/keymap` | Remap TUI keyboard shortcuts |
 | `/logout` | Sign out of Codex |
 | `/mcp` | List configured Model Context Protocol (MCP) tools |
 | `/mention` | Attach a file to the conversation |
@@ -125,6 +126,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/resume` | Resume a saved conversation from your session list |
 | `/review` | Ask Codex to review your working tree |
 | `/sandbox-add-read-dir` | Grant sandbox read access to an extra directory (Windows only) |
+| `/side` | Start an ephemeral side conversation |
 | `/status` | Display session configuration and token usage |
 | `/statusline` | Configure TUI status-line fields interactively |
 | `/stop` | Stop all background terminals |
@@ -134,7 +136,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 ## Claude Code CLI
 
-**Version:** v2.1.119
+**Version:** v2.1.126
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -235,7 +237,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.39.1
+**Version:** v0.40.1
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
