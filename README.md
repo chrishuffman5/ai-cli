@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.62 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.139.0 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.177 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.46.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.63 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.141.0 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.185 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.47.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.62
+**Version:** v1.0.63
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -29,15 +29,15 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | Command | Description |
 |---------|-------------|
 | `/add-dir PATH` | Add a directory to the allowed list for file access |
+| `/after [DELAY PROMPT]`, `/after` | Schedule a non-recurring prompt, skill, or schedulable slash command for the current session; only available in experimental mode |
 | `/agent` | Browse and select from available agents |
+| `/app` | Launch the GitHub Copilot app, or show the download URL if the app is not installed |
 | `/ask QUESTION` | Ask a quick side question without adding to the conversation history; only available in experimental mode |
 | `/allow-all [on\|off\|show]`, `/yolo [on\|off\|show]` | Enable all permissions (tools, paths, and URLs) |
 | `/changelog [summarize] [VERSION\|last N\|since VERSION]`, `/release-notes [summarize] [VERSION\|last N\|since VERSION]` | Display the CLI changelog |
 | `/chronicle <standup\|tips\|improve\|reindex>` | Use session history tools and insights |
 | `/clear [PROMPT]`, `/new [PROMPT]`, `/reset [PROMPT]` | Start a new conversation |
 | `/clikit [COMPONENT]` | Preview CLI business components |
-| `/collect-debug-logs [file\|gist] [PATH]` | Collect debug logs to an archive file or GitHub gist |
-| `/diagnose [PROMPT]` | Analyze the current session log and optionally prompt the agent with a question about diagnostics |
 | `/compact [FOCUS-INSTRUCTIONS]` | Summarize conversation history to reduce context window usage, optionally focused by instructions |
 | `/context` | Show context window token usage and visualization |
 | `/copy` | Copy the last response to the clipboard |
@@ -46,6 +46,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/diff` | Review changes in the current directory; auto-switches to branch diff when the working tree is clean (experimental) |
 | `/downgrade <VERSION>` | Download and restart into a specific CLI version; available for team accounts |
 | `/env` | Show loaded environment details (instructions, MCP servers, skills, agents, plugins, LSPs, hooks, extensions) |
+| `/every [INTERVAL PROMPT]`, `/every` | Schedule a recurring prompt, skill, or schedulable slash command for the current session; only available in experimental mode |
 | `/exit`, `/quit` | Exit the CLI |
 | `/extensions [manage\|mode]`, `/extension` | Manage CLI extensions |
 | `/experimental [on\|off\|show]` | Toggle, set, or show experimental features |
@@ -60,7 +61,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/login` | Log in to Copilot |
 | `/logout` | Log out of Copilot |
 | `/lsp [show\|test\|reload\|help] [SERVER-NAME]` | Manage language server configuration |
-| `/mcp [show\|add\|edit\|delete\|disable\|enable\|auth\|reload] [SERVER-NAME]` | Manage MCP server configuration |
+| `/mcp [show\|add\|edit\|delete\|disable\|enable\|auth\|reload\|search] [SERVER-NAME]` | Manage MCP server configuration |
 | `/model`, `/models [MODEL]` | Select the AI model to use |
 | `/permissions [show\|reset]` | View or clear in-memory tool and path approvals for the current session |
 | `/plan [PROMPT]` | Create an implementation plan before coding |
@@ -76,27 +77,29 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/rubber-duck [PROMPT]` | Consult the rubber duck agent for a second opinion on plans, code, and tests |
 | `/sandbox [enable\|disable]` | Configure shell command sandboxing |
 | `/search [QUERY]`, `/find [QUERY]` | Search the conversation timeline; only available in experimental mode |
+| `/security-review [PROMPT]` | Run the security review agent to analyze changes for vulnerabilities |
 | `/session [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]`, `/sessions [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]` | Show session information and manage sessions |
 | `/settings [show\|[KEY VALUE]\|reset KEY]` | Open the settings dialog, set a setting inline, or reset a setting to its default |
 | `/share [file\|html\|gist] [session\|research] [PATH]`, `/export [file\|html\|gist] [session\|research] [PATH]` | Share the session to a Markdown file, interactive HTML file, or GitHub gist |
 | `/skills [list\|info\|add\|remove\|reload] [ARGS...]` | Manage skills for enhanced capabilities |
 | `/statusline`, `/footer` | Configure which items appear in the status line |
+| `/subagents`, `/agents` | Configure default and per-agent subagent models |
 | `/tasks` | View and manage tasks (subagents and shell commands) |
 | `/terminal-setup` | Configure the terminal for multiline input support |
 | `/theme [default\|dim\|high-contrast\|colorblind]` | View or set the color mode |
 | `/tuikit [colors\|icons\|select\|tabbar]` | Preview TUIkit design-system components and color tokens |
-| `/undo`, `/rewind` | Rewind the last turn and revert file changes |
+| `/undo`, `/rewind` | Rewind the last turn and revert file changes tracked by the tool layer |
 | `/update`, `/upgrade` | Update the CLI to the latest version |
 | `/usage` | Display session usage metrics and statistics |
 | `/user [show\|list\|switch]` | Manage the current GitHub user |
 | `/version` | Display version information and check for updates |
-| `/worktree [branch]`, `/move [branch]` | Create a new git worktree and switch to it, moving uncommitted changes along; only available in experimental mode |
+| `/worktree [branch]`, `/move [branch]` | Create a new git worktree and switch to it, moving uncommitted changes along and auto-generating a branch name if omitted; only available in experimental mode |
 
 ---
 
 ## OpenAI Codex CLI
 
-**Version:** v0.139.0
+**Version:** v0.141.0
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -117,6 +120,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/compact` | Summarize the visible conversation to free tokens |
 | `/copy` | Copy the latest completed Codex output |
 | `/debug-config` | Print config layer and requirements diagnostics |
+| `/delete` | Permanently delete the current session and exit Codex |
 | `/diff` | Show the Git diff, including files Git isn't tracking yet |
 | `/exit` | Exit the CLI (same as `/quit`) |
 | `/experimental` | Toggle experimental features |
@@ -125,6 +129,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/fork` | Fork the current conversation into a new thread |
 | `/hooks` | View and manage lifecycle hooks |
 | `/ide` | Include open files, current selection, and other IDE context |
+| `/import` | Import Claude Code setup, project files, and recent chats |
 | `/init` | Generate an `AGENTS.md` scaffold in the current directory |
 | `/keymap` | Remap TUI keyboard shortcuts |
 | `/logout` | Sign out of Codex |
@@ -151,13 +156,14 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/stop` | Stop all background terminals |
 | `/title` | Configure terminal window or tab title fields interactively |
 | `/theme` | Choose a syntax-highlighting theme |
+| `/usage` | View account token usage or use a rate-limit reset |
 | `/vim` | Toggle Vim mode for the composer |
 
 ---
 
 ## Claude Code CLI
 
-**Version:** v2.1.177
+**Version:** v2.1.185
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -184,7 +190,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/clear [name]`, `/reset [name]`, `/new [name]` | Start a new conversation with empty context |
 | `/color [color\|default]` | Set the prompt bar color for the current session |
 | `/compact [instructions]` | Compact conversation with optional focus instructions |
-| `/config`, `/settings` | Open the Settings interface |
+| `/config [key=value ...]`, `/settings` | Open the Settings interface or set one or more settings directly |
 | `/context [all]` | Visualize current context usage as a colored grid |
 | `/copy [N]` | Copy the last assistant response to clipboard |
 | `/cost` | Alias for `/usage` |
@@ -273,7 +279,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.46.0
+**Version:** v0.47.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
