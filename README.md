@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.68 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.142.5 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.201 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.49.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.70 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.144.1 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.207 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.50.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.68
+**Version:** v1.0.70
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -80,14 +80,14 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/search [QUERY]`, `/find [QUERY]` | Search the conversation timeline; only available in experimental mode |
 | `/security-review [PROMPT]` | Run the security review agent to analyze changes for vulnerabilities |
 | `/session [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]`, `/sessions [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]` | Show session information and manage sessions |
-| `/settings [show\|[KEY VALUE]\|reset KEY]` | Open the settings dialog, set a setting inline, or reset a setting to its default |
+| `/settings [show KEY\|KEY\|KEY VALUE]`, `/config [show KEY\|KEY\|KEY VALUE]` | Open the settings editor, focus on a setting, set a value inline, or display a setting's current value |
 | `/share [file\|html\|gist] [session\|research] [PATH]`, `/export [file\|html\|gist] [session\|research] [PATH]` | Share the session to a Markdown file, interactive HTML file, or GitHub gist |
 | `/skills [list\|info\|add\|remove\|reload] [ARGS...]` | Manage skills for enhanced capabilities |
 | `/statusline`, `/footer` | Configure which items appear in the status line |
 | `/subagents`, `/agents` | Configure default and per-agent subagent models |
 | `/tasks` | View and manage tasks (subagents and shell commands) |
 | `/terminal-setup` | Configure the terminal for multiline input support |
-| `/theme [default\|dim\|high-contrast\|colorblind]` | View or set the color mode |
+| `/theme [default\|github\|dim\|high-contrast\|colorblind]` | View or set the color mode |
 | `/tuikit [colors\|icons\|select\|tabbar]` | Preview TUIkit design-system components and color tokens |
 | `/undo`, `/rewind` | Rewind the last turn and revert file changes; file tracking is done via the tool layer and does not require Git |
 | `/update`, `/upgrade` | Update the CLI to the latest version |
@@ -100,7 +100,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 ## OpenAI Codex CLI
 
-**Version:** v0.142.5
+**Version:** v0.144.1
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -113,7 +113,8 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 | Command | Description |
 |---------|-------------|
-| `/agent` | Switch the active agent thread |
+| `/agent`, `/subagents` | Switch the active agent thread |
+| `/app` | Continue the current session in the ChatGPT desktop app |
 | `/apps` | Browse apps (connectors) and insert them into your prompt |
 | `/approve` | Approve one retry of a recent auto review denial |
 | `/archive` | Archive the current session and exit Codex |
@@ -147,9 +148,11 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/ps` | Show experimental background terminals and their recent output |
 | `/quit` | Exit the CLI |
 | `/raw` | Toggle raw scrollback mode |
+| `/rename` | Rename the current task |
 | `/resume` | Resume a saved conversation from your session list |
 | `/review` | Ask Codex to review your working tree |
 | `/sandbox-add-read-dir` | Grant sandbox read access to an extra directory (Windows only) |
+| `/setup-default-sandbox` | Set up the elevated agent sandbox (Windows only) |
 | `/side`, `/btw` | Start an ephemeral side conversation |
 | `/skills` | Browse and use skills |
 | `/status` | Display session configuration and token usage |
@@ -157,6 +160,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/stop` | Stop all background terminals |
 | `/title` | Configure terminal window or tab title fields interactively |
 | `/theme` | Choose a syntax-highlighting theme |
+| `/pets`, `/pet` | Choose or hide a terminal pet |
 | `/usage` | View account token usage or use a rate-limit reset |
 | `/vim` | Toggle Vim mode for the composer |
 
@@ -164,7 +168,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 ## Claude Code CLI
 
-**Version:** v2.1.201
+**Version:** v2.1.207
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -283,7 +287,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.49.0
+**Version:** v0.50.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
