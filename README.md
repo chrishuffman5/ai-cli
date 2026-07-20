@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.70 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.144.1 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.207 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.50.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.71 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.144.6 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.215 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.51.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.70
+**Version:** v1.0.71
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -100,7 +100,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 ## OpenAI Codex CLI
 
-**Version:** v0.144.1
+**Version:** v0.144.6
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -143,7 +143,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/permissions` | Set what Codex can do without asking first |
 | `/personality` | Choose a communication style for responses |
 | `/plan` | Switch to plan mode and optionally send a prompt |
-| `/goal` | Set, pause, resume, view, or clear a task goal |
+| `/goal` | Set, edit, pause, resume, view, or clear a task goal |
 | `/plugins` | Browse installed and discoverable plugins |
 | `/ps` | Show experimental background terminals and their recent output |
 | `/quit` | Exit the CLI |
@@ -157,7 +157,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/skills` | Browse and use skills |
 | `/status` | Display session configuration and token usage |
 | `/statusline` | Configure TUI status-line fields interactively |
-| `/stop` | Stop all background terminals |
+| `/stop`, `/clean` | Stop all background terminals |
 | `/title` | Configure terminal window or tab title fields interactively |
 | `/theme` | Choose a syntax-highlighting theme |
 | `/pets`, `/pet` | Choose or hide a terminal pet |
@@ -168,7 +168,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 ## Claude Code CLI
 
-**Version:** v2.1.207
+**Version:** v2.1.215
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -182,12 +182,12 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | Command | Description |
 |---------|-------------|
 | `/add-dir <path>` | Add a new working directory to the current session |
-| `/advisor [model\|off]` | Enable or disable the advisor tool that consults a second model; accepts `opus`, `sonnet`, `fable`, or a full model ID |
+| `/advisor [model\|off]` | Enable or disable the advisor tool that consults a second model; accepts `opus`, `sonnet`, or a full model ID (Fable 5 is not supported) |
 | `/agents` | Print guidance to ask Claude to create or manage subagents, or edit `.claude/agents/` or `~/.claude/agents/` directly; v2.1.197 and earlier opened an interactive manager |
 | `/autofix-pr [prompt]` | Spawn a web session that auto-fixes CI failures and review feedback on your PR |
 | `/background [prompt]`, `/bg [prompt]` | Detach the current session to run as a background agent |
 | `/batch <instruction>` | Skill command to orchestrate large-scale, parallel codebase changes |
-| `/btw <question>` | Ask a quick side question without adding to the conversation |
+| `/btw [question]` | Ask a quick side question without adding to the conversation, or reopen the most recent side-question overlay when no question is provided |
 | `/branch [name]` | Create a branch of the current conversation |
 | `/claude-api [migrate\|managed-agents-onboard]` | Skill command to load Claude API and Managed Agents reference material |
 | `/cd <path>` | Move the current session to a new working directory |
@@ -207,15 +207,16 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/design-sync [hint]` | Skill command to convert a repo's React design system and upload it to Claude Design |
 | `/desktop`, `/app` | Continue the current session in the Claude Code Desktop app |
 | `/diff` | Open an interactive diff viewer showing uncommitted changes |
-| `/doctor` | Diagnose and verify your Claude Code installation |
+| `/doctor`, `/checkup` | Diagnose installation and configuration issues and offer fixes |
 | `/effort [level\|auto]` | Set model effort (`low`, `medium`, `high`, `xhigh`, `max`, or `ultracode`) |
 | `/exit`, `/quit` | Exit the CLI |
 | `/export [filename]` | Export the current conversation as plain text |
 | `/fast [on\|off]` | Toggle fast mode on or off |
-| `/feedback [report]`, `/bug [report]`, `/share` | Submit feedback, report a bug, or share your conversation |
+| `/feedback [report]` | Send product feedback with an optional report and session context |
+| `/bug [report]`, `/share` | Report a bug or share the conversation, with a consent step for included session history |
 | `/fewer-permission-prompts` | Skill command to add a prioritized allowlist and reduce permission prompts |
 | `/focus` | Toggle focus view in fullscreen rendering |
-| `/fork <directive>` | Spawn a forked background subagent that inherits the full conversation and works on the directive |
+| `/fork [prompt]` | Copy the conversation into a separate background session while the current session continues |
 | `/goal [condition\|clear]` | Set, view, or clear a goal that Claude keeps working toward across turns |
 | `/heapdump` | Write a JavaScript heap snapshot to help diagnose memory issues |
 | `/help` | Show help and available commands |
@@ -266,6 +267,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/statusline` | Configure Claude Code's status line |
 | `/stickers` | Order Claude Code stickers |
 | `/stop` | Stop the current background session while preserving its transcript and worktree |
+| `/subtask <task>` | Spawn a forked background subagent that inherits the full conversation and reports its result back to the current session |
 | `/tasks`, `/bashes` | List and manage background tasks |
 | `/team-onboarding` | Generate a team onboarding guide from recent Claude Code usage |
 | `/teleport`, `/tp` | Pull a Claude Code on the web session into your local terminal |
@@ -287,7 +289,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.50.0
+**Version:** v0.51.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
