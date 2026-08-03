@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.75 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.145.0 | `npm install -g @openai/codex` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.77 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.146.0 | `npm install -g @openai/codex` |
 | [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.220 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.52.0 | `npm install -g @google/gemini-cli` |
+| [Gemini CLI](#gemini-cli) | Google | v0.53.1 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.75
+**Version:** v1.0.77
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -96,13 +96,14 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/usage` | Display session usage metrics and statistics, including per-model token totals |
 | `/user [show\|list\|switch]` | Manage the current GitHub user |
 | `/version` | Display version information and check for updates |
-| `/worktree [branch]`, `/move [branch]` | Create a new Git worktree and switch to it, moving uncommitted changes along and auto-generating a branch name if omitted; requires a Git repository and is only available in experimental mode |
+| `/voice [on\|off\|models\|devices]` | Toggle voice input, choose a voice model, or select an audio input device |
+| `/worktree [branch\|task]`, `/move [branch\|task]` | Create and switch to a new Git worktree, or move uncommitted changes to one; accepts a branch name or task description |
 
 ---
 
 ## OpenAI Codex CLI
 
-**Version:** v0.145.0
+**Version:** v0.146.0
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -133,7 +134,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/fork` | Fork the current conversation into a new thread |
 | `/hooks` | View and manage lifecycle hooks |
 | `/ide` | Include open files, current selection, and other IDE context |
-| `/import` | Import Claude Code setup, project files, and recent chats |
+| `/import` | Import Claude Code or Cursor setup, project files, and recent chats |
 | `/init` | Generate an `AGENTS.md` scaffold in the current directory |
 | `/keymap` | Remap TUI keyboard shortcuts |
 | `/logout` | Sign out of Codex |
@@ -159,7 +160,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/skills` | Browse and use skills |
 | `/status` | Display session configuration and token usage |
 | `/statusline` | Configure TUI status-line fields interactively |
-| `/stop`, `/clean` | Stop all background terminals |
+| `/stop` | Stop all background terminals |
 | `/title` | Configure terminal window or tab title fields interactively |
 | `/theme` | Choose a syntax-highlighting theme |
 | `/pets`, `/pet` | Choose or hide a terminal pet |
@@ -277,7 +278,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/theme` | Change the color theme |
 | `/tui [default\|fullscreen]` | Set the terminal UI renderer and relaunch with the current conversation |
 | `/ultraplan <prompt>` | Draft a plan in a cloud ultraplan session |
-| `/ultrareview [PR]` | Run a deep multi-agent code review in a cloud sandbox; `/code-review ultra` is the preferred invocation |
+| `/ultrareview [PR or branch]` | Run a deep multi-agent code review in a cloud sandbox; `/code-review ultra` is the preferred invocation |
 | `/upgrade` | Open the upgrade page for a higher plan tier |
 | `/usage` | Show session cost, plan usage limits, and activity stats |
 | `/usage-credits` | Configure usage credits to keep working when you hit a limit; previously `/extra-usage` |
@@ -291,7 +292,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.52.0
+**Version:** v0.53.1
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
