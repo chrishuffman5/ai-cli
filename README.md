@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.80 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.149.1 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.241 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.56.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.82 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.151.0 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.251 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.57.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.80
+**Version:** v1.0.82
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -44,6 +44,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/copy` | Copy the last response to the clipboard |
 | `/cwd`, `/cd [PATH]` | Change the working directory or display current directory |
 | `/delegate [PROMPT]` | Delegate changes to a remote repository with an AI-generated pull request |
+| `/diagnose [PROMPT]`, `/diagnose` | Analyze the current session log for errors and unexpected behavior, optionally focusing the diagnosis with a custom prompt |
 | `/diff` | Review changes in the current directory; auto-switches to branch diff when the working tree is clean (experimental) |
 | `/downgrade <VERSION>` | Download and restart into a specific CLI version; available for team accounts |
 | `/env` | Show loaded environment details (instructions, MCP servers, skills, agents, plugins, LSPs, hooks, extensions) |
@@ -105,7 +106,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 ## OpenAI Codex CLI
 
-**Version:** v0.149.1
+**Version:** v0.151.0
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -173,7 +174,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 ## Claude Code CLI
 
-**Version:** v2.1.241
+**Version:** v2.1.251
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -197,7 +198,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/batch <instruction>` | Skill command to orchestrate large-scale, parallel codebase changes |
 | `/btw [question]` | Ask a quick side question without adding to the conversation, or reopen the most recent side-question overlay when no question is provided |
 | `/branch [name]` | Create a branch of the current conversation |
-| `/claude-api [migrate\|upgrade\|managed-agents-onboard\|prompt-audit]` | Skill command to load Claude API and Managed Agents reference material, migrate model usage, upgrade the Anthropic SDK, onboard a Managed Agent, or audit prompts for older-model instructions |
+| `/claude-api [migrate\|upgrade\|managed-agents-onboard\|prompt-audit\|cost-optimize]` | Skill command to load Claude API and Managed Agents reference material, migrate model usage, upgrade the Anthropic SDK, onboard a Managed Agent, audit prompts for older-model instructions, or profile API spend and propose savings |
 | `/cd <path>` | Move the current session to a new working directory |
 | `/chrome` | Configure Claude in Chrome settings |
 | `/clear [name]`, `/reset [name]`, `/new [name]` | Start a new conversation with empty context |
@@ -211,6 +212,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/dataviz [request]` | Skill command with design guidance for charts, graphs, and dashboards |
 | `/debug [description]` | Skill command to enable debug logging and troubleshoot issues |
 | `/deep-research <question>` | Workflow command to fan out web searches, cross-check sources, and synthesize a cited report |
+| `/design [brief]` | Skill command to draft UI mockups, screen flows, landing pages, or posters as artboards on a single canvas |
 | `/design-login` | Authorize design-system access for `/design-sync` with your claude.ai account |
 | `/design-sync [hint]` | Skill command to convert a repo's React design system and upload it to Claude Design |
 | `/desktop`, `/app` | Continue the current session in the Claude Code Desktop app |
@@ -252,6 +254,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/pr-comments [PR]` | Removed in v2.1.91 (ask Claude directly to view pull request comments) |
 | `/privacy-settings` | View and update privacy settings |
 | `/radio` | Open Claude FM lo-fi radio in your browser |
+| `/rate-limit-options` | Show ways to keep working after reaching a claude.ai usage limit; type the command in full because it does not appear in the command menu |
 | `/recap` | Generate a one-line summary of the current session |
 | `/release-notes` | View the full changelog |
 | `/reload-plugins [--force]` | Reload all active plugins, optionally forcing MCP tool changes that invalidate the prompt cache |
@@ -293,13 +296,14 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/verify` | Skill command to confirm a code change works by building, running, and observing the app |
 | `/voice [hold\|tap\|off]` | Toggle voice dictation or enable a specific mode |
 | `/web-setup` | Connect your GitHub account to Claude Code on the web |
+| `/workflow-authoring` | Skill command to load reference material for writing and editing dynamic workflow scripts |
 | `/workflows` | Open the workflow progress view to watch, pause, resume, or save workflows |
 
 ---
 
 ## Gemini CLI
 
-**Version:** v0.56.0
+**Version:** v0.57.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
