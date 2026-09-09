@@ -61,6 +61,7 @@ jobs:
         run: |
           codex exec \
             -c preferred_auth_method=apikey \
+            -m gpt-5.6-luna \
             --dangerously-bypass-approvals-and-sandbox \
             "Read the skill at .claude/skills/document-aiclis/SKILL.md and follow its update procedure to update README.md with the latest versions and slash commands for all 4 AI CLIs. Check the npm registry for version updates and the official vendor documentation for slash command changes. Only update what has actually changed."
 
