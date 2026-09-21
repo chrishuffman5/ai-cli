@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.83 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.154.0 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.270 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.59.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.86 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.155.1 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.278 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.60.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.83
+**Version:** v1.0.86
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -28,10 +28,10 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 | Command | Description |
 |---------|-------------|
-| `/add-dir PATH` | Add a directory to the allowed list for file access |
+| `/add-dir PATH` | Allow file access to a directory and load its `.github/skills` and `.github/agents` as trusted configurations |
 | `/after [DELAY PROMPT]`, `/after` | Schedule a non-recurring prompt, skill, or schedulable slash command for the current session; only available in experimental mode |
 | `/agent` | Browse and select from available agents |
-| `/app` | Launch the GitHub Copilot app, or show the download URL if the app is not installed |
+| `/app` | Open the current session in the GitHub Copilot app (requires version 1.1.3 or later), or show the download URL if the app is not installed |
 | `/ask QUESTION`, `/btw QUESTION` | Ask a quick side question without adding to the conversation history |
 | `/allow-all [off\|auto\|show]`, `/yolo [off\|auto\|show]` | Enable all permissions (tools, paths, and URLs); aliases for `/permissions allow-all` |
 | `/autopilot [OBJECTIVE]`, `/goal [OBJECTIVE]` | Start or refocus experimental autopilot mode, optionally setting an objective or AI-credit cap |
@@ -48,7 +48,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/diff` | Review changes in the current directory; auto-switches to branch diff when the working tree is clean (experimental) |
 | `/downgrade <VERSION>` | Download and restart into a specific CLI version; available for team accounts |
 | `/env` | Show loaded environment details (instructions, MCP servers, skills, agents, plugins, LSPs, hooks, extensions) |
-| `/every [INTERVAL PROMPT]`, `/every` | Schedule a recurring prompt, skill, or schedulable slash command for the current session; only available in experimental mode |
+| `/every [INTERVAL] PROMPT`, `/every` | Schedule a recurring prompt, skill, or schedulable slash command for the current session; only available in experimental mode |
 | `/exit`, `/quit` | Close the current session, or quit when it is the last open session; `/exit print` always tears down the CLI and offers to dump the transcript |
 | `/extensions [manage\|mode]`, `/extension` | Manage CLI extensions |
 | `/experimental [on\|off\|show]` | Toggle, set, or show experimental features |
@@ -116,6 +116,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/usage` | Display session usage metrics and statistics, including per-model token totals |
 | `/user [show\|list\|switch]` | Manage the current GitHub user |
 | `/version` | Display version information and check for updates |
+| `/vim` | Toggle Vim mode for the input composer |
 | `/voice [on\|off\|models\|devices]` | Toggle voice input, choose a voice model, or select an audio input device |
 | `/worktree [branch\|task]`, `/worktree new [PROMPT]` | Create and switch to a new Git worktree, or start a new conversation in a new worktree while leaving the current conversation and directory unchanged; experimental |
 
@@ -123,7 +124,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 ## OpenAI Codex CLI
 
-**Version:** v0.154.0
+**Version:** v0.155.1
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -198,7 +199,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 ## Claude Code CLI
 
-**Version:** v2.1.270
+**Version:** v2.1.278
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -212,7 +213,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | Command | Description |
 |---------|-------------|
 | `/add-dir <path>` | Add a new working directory to the current session |
-| `/advisor [model\|off]` | Enable or disable the advisor tool that consults a second model; accepts `fable`, `opus`, `sonnet`, or a full model ID (`fable` requires Fable 5 access) |
+| `/advisor [model\|off]` | Enable or disable the advisor tool that consults a second model; accepts `fable`, `opus`, `sonnet`, or a full model ID; without an argument, opens a picker |
 | `/agents` | Print guidance to ask Claude to create or manage subagents, or edit `.claude/agents/` or `~/.claude/agents/` directly; v2.1.197 and earlier opened an interactive manager |
 | `/artifacts` | List artifacts you own or that are shared with you, then attach one, open it in a browser, or copy its link |
 | `/auto-mode-setup` | Draft auto mode environment entries from the project and recent sessions, then review and save them to user settings |
@@ -256,7 +257,8 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/help` | Show help and available commands |
 | `/hooks` | View hook configurations for tool events |
 | `/ide` | Manage IDE integrations and show status |
-| `/import [codex\|gemini] [--dry-run] [--yes]` | Import instructions, MCP servers, commands, subagents, and skills from OpenAI Codex or Gemini CLI |
+| `/import [codex\|gemini\|cursor] [--dry-run] [--yes]` | Import instructions, MCP servers, commands, subagents, and skills from OpenAI Codex, Gemini CLI, or Cursor |
+| `/output-style [style]` | List output styles or switch to one |
 | `/init` | Initialize project with a CLAUDE.md guide |
 | `/insights` | Generate a report analyzing your Claude Code sessions |
 | `/install-github-app` | Set up the Claude GitHub Actions app |
@@ -328,7 +330,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.59.0
+**Version:** v0.60.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
@@ -341,23 +343,23 @@ Gemini CLI is an open-source AI agent by Google that brings the power of Gemini 
 
 | Command | Description |
 |---------|-------------|
-| `/about` | Show version info |
+| `/about` | Show version info and share it when filing issues |
 | `/agents` | Manage local and remote subagents |
 | `/auth` | Open a dialog that lets you change the authentication method |
 | `/bug` | File an issue about Gemini CLI |
 | `/chat` | Alias for `/resume` with the same session browser and checkpoint subcommands |
-| `/clear` | Clear the terminal screen |
+| `/clear` | Clear the conversation context and terminal screen, then start a new session |
 | `/commands` | Manage custom slash commands loaded from `.toml` files |
 | `/compress` | Replace the entire chat context with a summary |
-| `/copy` | Copy the last output produced by Gemini CLI to your clipboard |
+| `/copy` | Copy the last output produced by Gemini CLI to your clipboard for sharing or reuse |
 | `/directory` (or `/dir`) | Manage workspace directories for multi-directory support |
 | `/docs` | Open Gemini CLI documentation in your browser |
 | `/editor` | Open a dialog for selecting supported editors |
 | `/extensions` | Manage extensions |
-| `/help` (or `/?`) | Display help information about Gemini CLI |
+| `/help` (or `/?`) | Display help information about Gemini CLI, including available commands and usage |
 | `/hooks` | Manage hooks to intercept and customize behavior |
 | `/ide` | Manage IDE integration |
-| `/init` | Generate a tailored `GEMINI.md` context file |
+| `/init` | Analyze the current directory and generate a tailored `GEMINI.md` context file |
 | `/mcp` | Manage configured Model Context Protocol (MCP) servers |
 | `/memory` | Manage the AI's instructional context loaded from `GEMINI.md` files |
 | `/model` | Manage model configuration |
@@ -366,7 +368,7 @@ Gemini CLI is an open-source AI agent by Google that brings the power of Gemini 
 | `/policies` | Manage policies |
 | `/privacy` | Display the Privacy Notice and consent preferences |
 | `/quit` (or `/exit`) | Exit Gemini CLI |
-| `/restore` | Restore project files to the state before a tool was executed |
+| `/restore` | Restore project files to their state before a tool was executed, or list available checkpoints |
 | `/resume` | Browse and resume previous conversation sessions and manage manual chat checkpoints |
 | `/rewind` | Navigate backward through conversation history and potentially revert chat state or file changes |
 | `/settings` | Open the settings editor to view and modify Gemini CLI settings |
