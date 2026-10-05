@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.88 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.158.0 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.283 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.61.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.91 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.160.0 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.289 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.62.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.88
+**Version:** v1.0.91
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -94,6 +94,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/review [PROMPT]` | Run the code review agent to analyze changes |
 | `/rubber-duck [PROMPT]` | Consult the rubber duck agent for a second opinion on plans, code, and tests |
 | `/sandbox [config\|status\|policy\|enable\|disable]` | Configure shell command sandboxing, show its status or effective policy, or toggle it |
+| `/sandbox ca [create\|trust\|rotate\|remove]` | Manage the sandbox's proxy certificate authority |
 | `/search [QUERY]`, `/find [QUERY]` | Search the conversation timeline; only available in experimental mode |
 | `/security-review [PROMPT]` | Run the security review agent to analyze changes for vulnerabilities |
 | `/session [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]`, `/sessions [info\|checkpoints [n]\|files\|plan\|rename [NAME]\|cleanup\|prune\|delete [ID]\|delete-all]` | Show session information and manage sessions |
@@ -119,12 +120,13 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/vim` | Toggle Vim mode for the prompt box |
 | `/voice [on\|off\|models\|devices]` | Toggle voice input, choose a voice model, or select an audio input device |
 | `/worktree [branch\|task]`, `/worktree new [PROMPT]` | Create and switch to a new Git worktree, or start a new conversation in a new worktree while leaving the current conversation and directory unchanged; experimental |
+| `/workflows` | Observe workflow runs, phases, agents, and progress |
 
 ---
 
 ## OpenAI Codex CLI
 
-**Version:** v0.158.0
+**Version:** v0.160.0
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -143,9 +145,6 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/approve` | Approve one retry of a recent auto review denial |
 | `/archive` | Archive the current session and exit Codex |
 | `/clear` | Clear the terminal and start a fresh chat |
-| `/clean` | Alias for `/stop`; stop all background terminals |
-| `/cloud` | Run the chat in the cloud, when cloud execution is available |
-| `/cloud-environment` | Choose the cloud environment for the chat |
 | `/compact` | Summarize the visible conversation to free tokens |
 | `/copy` | Copy the latest completed Codex output |
 | `/debug-config` | Print config layer and requirements diagnostics |
@@ -163,7 +162,6 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/init` | Generate an `AGENTS.md` scaffold in the current directory |
 | `/keymap` | Remap TUI keyboard shortcuts |
 | `/logout` | Sign out of Codex |
-| `/local` | Run the chat in the local workspace |
 | `/mcp` | List configured Model Context Protocol (MCP) tools |
 | `/memories` | Configure memory use and generation |
 | `/mention` | Attach a file to the conversation |
@@ -172,13 +170,11 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/permissions` | Set what Codex can do without asking first |
 | `/personality` | Choose a communication style for responses |
 | `/plan` | Switch to plan mode and optionally send a prompt |
-| `/project` | Choose a project for new chats |
 | `/goal` | Set, edit, pause, resume, view, or clear a task goal |
 | `/plugins` | Browse installed and discoverable plugins |
 | `/ps` | Show experimental background terminals and their recent output |
 | `/quit` | Exit the CLI |
 | `/raw` | Toggle raw scrollback mode |
-| `/reasoning` | Choose the reasoning effort |
 | `/rename` | Rename the current task |
 | `/resume` | Resume a saved conversation from your session list |
 | `/review` | Ask Codex to review your working tree |
@@ -194,13 +190,12 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 | `/pets`, `/pet` | Choose or hide a terminal pet |
 | `/usage` | View account token usage or use a rate-limit reset |
 | `/vim` | Toggle Vim mode for the composer |
-| `/worktree` | Run the chat in a new Git worktree |
 
 ---
 
 ## Claude Code CLI
 
-**Version:** v2.1.283
+**Version:** v2.1.289
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -216,6 +211,8 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/add-dir <path>` | Add a new working directory to the current session |
 | `/advisor [model\|off]` | Enable or disable the advisor tool that consults a second model; accepts `fable`, `opus`, `sonnet`, or a full model ID; without an argument, opens a picker |
 | `/agents` | Print guidance to ask Claude to create or manage subagents, or edit `.claude/agents/` or `~/.claude/agents/` directly; v2.1.197 and earlier opened an interactive manager |
+| `/artifact-capabilities` | Load reference material for the runtime capabilities available to published artifacts |
+| `/artifact-diagramming` | Load diagramming guidance for Claude artifacts; requires v2.1.221 or later |
 | `/artifacts` | List artifacts you own or that are shared with you, then attach one, open it in a browser, or copy its link |
 | `/auto-mode-setup` | Draft auto mode environment entries from the project and recent sessions, then review and save them to user settings |
 | `/autocompact [auto\|<tokens>]` | Set or inspect the auto-compact context-window threshold; requires v2.1.221 or later |
@@ -224,9 +221,10 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/batch <instruction>` | Skill command to orchestrate large-scale, parallel codebase changes |
 | `/btw [question]` | Ask a quick side question without adding to the conversation, or reopen the most recent side-question overlay when no question is provided |
 | `/branch [name]` | Create a branch of the current conversation |
-| `/claude-api [migrate\|upgrade\|managed-agents-onboard\|prompt-audit\|cost-optimize\|build-eval\|hillclimb]` | Skill command to load Claude API and Managed Agents reference material, migrate model usage, upgrade the Anthropic SDK, onboard a Managed Agent, audit prompts for older-model instructions, profile API spend and propose savings, build an eval set, or iteratively improve an app against an existing eval |
+| `/claude-api [migrate\|upgrade\|managed-agents-onboard\|prompt-audit\|cost-optimize\|build-eval\|hillclimb\|preserved-thinking-migration]` | Skill command to load Claude API and Managed Agents reference material, migrate model usage, upgrade the Anthropic SDK, onboard a Managed Agent, audit prompts for older-model instructions, profile API spend and propose savings, build an eval set, iteratively improve an app against an existing eval, or migrate preserved thinking |
 | `/cd <path>` | Move the current session to a new working directory |
 | `/chrome` | Configure Claude in Chrome settings |
+| `/claude-in-chrome [task]` | Carry out a browser task through Claude in Chrome when the integration is enabled |
 | `/clear [name]`, `/reset [name]`, `/new [name]` | Start a new conversation with empty context |
 | `/color [color\|default]` | Set the prompt bar color for the current session |
 | `/compact [instructions]` | Compact conversation with optional focus instructions |
@@ -244,7 +242,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/desktop`, `/app` | Continue the current session in the Claude Code Desktop app |
 | `/diff` | Open an interactive diff viewer showing uncommitted changes |
 | `/doctor`, `/checkup` | Diagnose installation and configuration issues and offer fixes |
-| `/effort [level\|auto\|status]` | Set or inspect model effort (`low`, `medium`, `high`, `xhigh`, `max`, or `ultracode`) |
+| `/effort [level\|auto\|status\|ultracode [on\|off]]` | Set or inspect model effort, or enable or disable Ultracode |
 | `/exit`, `/quit` | Exit the CLI |
 | `/export [filename]` | Export the current conversation as plain text |
 | `/fast [on\|off]` | Toggle fast mode on or off |
@@ -277,6 +275,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/permissions`, `/allowed-tools` | View or update permissions |
 | `/plan [description]` | Enter plan mode directly from the prompt |
 | `/plugin [subcommand]` | Manage Claude Code plugins |
+| `/plugin-authoring` | Load the reference for writing a Claude Code plugin mod; requires v2.1.287 or later |
 | `/powerup` | Launch quick interactive lessons for Claude Code features |
 | `/pr-comments [PR]` | Removed in v2.1.91 (ask Claude directly to view pull request comments) |
 | `/privacy-settings` | View and update privacy settings |
@@ -303,6 +302,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 | `/setup-vertex` | Configure Google Vertex AI authentication and model settings |
 | `/simplify [target]` | Skill command to review changed code for cleanup opportunities and apply fixes |
 | `/skills` | List available skills |
+| `/slides [brief]` | Skill command to create a presentation as a Claude Slides artifact; requires v2.1.265 or later |
 | `/stats` | Alias for `/usage`, opening on the Stats tab |
 | `/status` | Show version, model, account, and connectivity |
 | `/statusline` | Configure Claude Code's status line |
@@ -332,7 +332,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.61.0
+**Version:** v0.62.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
