@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.91 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.160.0 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.289 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.62.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.95 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.162.1 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.296 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.63.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.91
+**Version:** v1.0.95
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -39,6 +39,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/chronicle <standup\|tips\|improve\|reindex\|skills create\|skills review\|skills status>` | Use session history tools and insights, including drafting, reviewing, and tracking repository skill proposals |
 | `/clear [PROMPT]`, `/new [PROMPT]`, `/reset [PROMPT]` | Start a new conversation |
 | `/clikit [COMPONENT]` | Preview CLI business components |
+| `/collect-debug-logs [file\|gist\|share] [PATH]` | Collect debug logs to an archive, a GitHub gist, or upload them to GitHub (`share`) |
 | `/compact [FOCUS-INSTRUCTIONS]` | Summarize conversation history to reduce context window usage, optionally focused by instructions |
 | `/context` | Show context window token usage and visualization |
 | `/copy` | Copy the last response to the clipboard |
@@ -126,7 +127,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 
 ## OpenAI Codex CLI
 
-**Version:** v0.160.0
+**Version:** v0.162.1
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -139,63 +140,34 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 | Command | Description |
 |---------|-------------|
-| `/agent`, `/subagents` | Switch the active agent thread |
-| `/app` | Continue the current session in the ChatGPT desktop app |
-| `/apps` | Browse apps (connectors) and insert them into your prompt |
-| `/approve` | Approve one retry of a recent auto review denial |
-| `/archive` | Archive the current session and exit Codex |
-| `/clear` | Clear the terminal and start a fresh chat |
-| `/compact` | Summarize the visible conversation to free tokens |
-| `/copy` | Copy the latest completed Codex output |
-| `/debug-config` | Print config layer and requirements diagnostics |
-| `/delete` | Permanently delete the current session and exit Codex |
-| `/diff` | Show the Git diff, including files Git isn't tracking yet |
-| `/exit` | Exit the CLI (same as `/quit`) |
-| `/experimental` | Toggle experimental features |
-| `/fast` | Toggle a Fast service tier when the model catalog exposes one |
-| `/feedback` | Send logs to the Codex maintainers |
-| `/fork` | Fork the current conversation into a new thread |
-| `/hooks` | View and manage lifecycle hooks |
-| `/ide` | Include open files, current selection, and other IDE context |
+| `/approve` | Approve one retry of a recent automatic-review denial, when automatic review is active |
+| `/cloud` | Run the chat in the cloud, when cloud execution is available |
+| `/cloud-environment` | Choose the cloud environment for the chat |
+| `/compact` | Compact the current chat's context |
+| `/fast` | Turn a catalog-provided Fast service tier on or off, when available |
+| `/feedback` | Open the feedback dialog to submit feedback and optionally include logs |
+| `/fork` | Copy a local chat into a new local chat |
+| `/goal` | Set a persistent goal for Codex to work toward |
 | `/ide-context` | Turn automatic IDE context on or off |
-| `/import` | Import Claude Code or Cursor setup, project files, and recent chats |
-| `/init` | Generate an `AGENTS.md` scaffold in the current directory |
-| `/keymap` | Remap TUI keyboard shortcuts |
-| `/logout` | Sign out of Codex |
-| `/mcp` | List configured Model Context Protocol (MCP) tools |
-| `/memories` | Configure memory use and generation |
-| `/mention` | Attach a file to the conversation |
-| `/model` | Choose the active model (and reasoning effort, when available) |
-| `/new` | Start a new conversation inside the same session |
-| `/permissions` | Set what Codex can do without asking first |
-| `/personality` | Choose a communication style for responses |
-| `/plan` | Switch to plan mode and optionally send a prompt |
-| `/goal` | Set, edit, pause, resume, view, or clear a task goal |
-| `/plugins` | Browse installed and discoverable plugins |
-| `/ps` | Show experimental background terminals and their recent output |
-| `/quit` | Exit the CLI |
-| `/raw` | Toggle raw scrollback mode |
-| `/rename` | Rename the current task |
-| `/resume` | Resume a saved conversation from your session list |
-| `/review` | Ask Codex to review your working tree |
-| `/sandbox-add-read-dir` | Grant sandbox read access to an extra directory (Windows only) |
-| `/setup-default-sandbox` | Set up the elevated agent sandbox (Windows only) |
-| `/side`, `/btw` | Start an ephemeral side conversation |
-| `/skills` | Browse and use skills |
-| `/status` | Display session configuration and token usage |
-| `/statusline` | Configure TUI status-line fields interactively |
-| `/stop` | Stop all background terminals |
-| `/title` | Configure terminal window or tab title fields interactively |
-| `/theme` | Choose a syntax-highlighting theme |
-| `/pets`, `/pet` | Choose or hide a terminal pet |
-| `/usage` | View account token usage or use a rate-limit reset |
-| `/vim` | Toggle Vim mode for the composer |
+| `/init` | Generate an `AGENTS.md` scaffold for the current project |
+| `/local` | Run the chat in your local workspace |
+| `/mcp` | Open MCP status to view connected servers |
+| `/memories` | Configure whether the chat can use or generate memories, when Memories is available |
+| `/model` | Choose the model for the current chat |
+| `/personality` | Choose how Codex responds, when the current model supports personalities |
+| `/plan` | Toggle plan mode for multi-step planning |
+| `/project` | Choose a project for new chats |
+| `/reasoning` | Choose the reasoning effort for the current chat |
+| `/review` | Start code review mode to review uncommitted changes or compare against a base branch |
+| `/side` | Start a temporary side chat without interrupting the main chat |
+| `/status` | Show the chat ID, context usage, and rate limits |
+| `/worktree` | Run the chat in a new Git worktree |
 
 ---
 
 ## Claude Code CLI
 
-**Version:** v2.1.289
+**Version:** v2.1.296
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -332,7 +304,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.62.0
+**Version:** v0.63.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
