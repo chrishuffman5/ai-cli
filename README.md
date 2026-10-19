@@ -6,16 +6,16 @@ A quick reference guide for the four major AI coding CLI tools.
 
 | CLI | Vendor | Version | Install |
 |-----|--------|---------|---------|
-| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.95 | `npm install -g @github/copilot` |
-| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.162.1 | `npm install -g @openai/codex` |
-| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.296 | `npm install -g @anthropic-ai/claude-code` |
-| [Gemini CLI](#gemini-cli) | Google | v0.63.0 | `npm install -g @google/gemini-cli` |
+| [GitHub Copilot CLI](#github-copilot-cli) | GitHub | v1.0.98 | `npm install -g @github/copilot` |
+| [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.163.0 | `npm install -g @openai/codex` |
+| [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.303 | `npm install -g @anthropic-ai/claude-code` |
+| [Gemini CLI](#gemini-cli) | Google | v0.64.0 | `npm install -g @google/gemini-cli` |
 
 ---
 
 ## GitHub Copilot CLI
 
-**Version:** v1.0.95
+**Version:** v1.0.98
 **Vendor:** GitHub
 **Documentation:** [docs.github.com/copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)
 **Command Reference:** [CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference)
@@ -69,7 +69,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/logout` | Log out of Copilot |
 | `/lsp [show\|test\|reload\|logs\|help] [SERVER-NAME]` | Manage language server configuration, including the live LSP services log panel |
 | `/mcp [config\|list\|show\|add\|edit\|delete\|disable\|enable\|auth\|reload\|search] [SERVER-NAME]` | Manage MCP server configuration |
-| `/model [--session\|--global\|--repo\|--local] [MODEL]`, `/models` | Select the AI model, reasoning effort, or context window, optionally changing session, global, or repository settings |
+| `/model [--session\|--global\|--repo\|--local] [MODEL\|auto TIER]`, `/models` | Select the AI model, reasoning effort, or context window, optionally changing session, global, or repository settings |
 | `/move [branch\|task]` | Move uncommitted changes into a new Git worktree and switch to it; accepts a branch name or task description and is experimental |
 | `/permissions [default\|assisted\|allow-all\|show]` | Switch between permission modes, or show the current mode |
 | `/permissions reset` | Reset all in-memory tool and path approvals for the current session |
@@ -94,7 +94,7 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/resume [SESSION-ID]`, `/continue [SESSION-ID]` | Switch to or resume a different session |
 | `/review [PROMPT]` | Run the code review agent to analyze changes |
 | `/rubber-duck [PROMPT]` | Consult the rubber duck agent for a second opinion on plans, code, and tests |
-| `/sandbox [config\|status\|policy\|enable\|disable]` | Configure shell command sandboxing, show its status or effective policy, or toggle it |
+| `/sandbox [config\|status\|policy [COMMAND]\|enable\|disable]` | Manage sandbox restrictions on filesystem and network access, show its status or effective policy, or toggle it |
 | `/sandbox ca [create\|trust\|rotate\|remove]` | Manage the sandbox's proxy certificate authority |
 | `/search [QUERY]`, `/find [QUERY]` | Search the conversation timeline; only available in experimental mode |
 | `/security-review [PROMPT]` | Run the security review agent to analyze changes for vulnerabilities |
@@ -120,14 +120,15 @@ GitHub Copilot CLI is a terminal-native AI coding agent that brings Copilot's ag
 | `/version` | Display version information and check for updates |
 | `/vim` | Toggle Vim mode for the prompt box |
 | `/voice [on\|off\|models\|devices]` | Toggle voice input, choose a voice model, or select an audio input device |
-| `/worktree [branch\|task]`, `/worktree new [PROMPT]` | Create and switch to a new Git worktree, or start a new conversation in a new worktree while leaving the current conversation and directory unchanged; experimental |
+| `/worktree [branch\|task]` | Create and switch to a new Git worktree, leaving uncommitted changes behind in the current worktree |
+| `/worktree new [PROMPT]` | Deprecated; start a new conversation in a new Git worktree (use `/new worktree` instead) |
 | `/workflows` | Observe workflow runs, phases, agents, and progress |
 
 ---
 
 ## OpenAI Codex CLI
 
-**Version:** v0.162.1
+**Version:** v0.163.0
 **Vendor:** OpenAI
 **Documentation:** [developers.openai.com/codex/cli](https://developers.openai.com/codex/cli)
 **Slash Commands Docs:** [Slash Commands Reference](https://developers.openai.com/codex/cli/slash-commands)
@@ -167,7 +168,7 @@ OpenAI Codex CLI is a lightweight, terminal-based coding agent that connects to 
 
 ## Claude Code CLI
 
-**Version:** v2.1.296
+**Version:** v2.1.303
 **Vendor:** Anthropic
 **Documentation:** [code.claude.com/docs](https://code.claude.com/docs/en/overview)
 **Commands Docs:** [Built-in Commands](https://code.claude.com/docs/en/commands)
@@ -304,7 +305,7 @@ Claude Code is an agentic coding tool by Anthropic that lives in your terminal, 
 
 ## Gemini CLI
 
-**Version:** v0.63.0
+**Version:** v0.64.0
 **Vendor:** Google
 **Documentation:** [geminicli.com/docs](https://geminicli.com/docs/)
 **Commands Docs:** [Commands Reference](https://geminicli.com/docs/reference/commands)
