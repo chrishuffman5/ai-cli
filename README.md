@@ -1,6 +1,6 @@
 # AI CLI Quick Reference
 
-A quick reference guide for the four major AI coding CLI tools.
+A quick reference guide for the five major AI coding CLI tools.
 
 ## Index
 
@@ -10,6 +10,7 @@ A quick reference guide for the four major AI coding CLI tools.
 | [OpenAI Codex CLI](#openai-codex-cli) | OpenAI | v0.163.0 | `npm install -g @openai/codex` |
 | [Claude Code CLI](#claude-code-cli) | Anthropic | v2.1.303 | `npm install -g @anthropic-ai/claude-code` |
 | [Gemini CLI](#gemini-cli) | Google | v0.64.0 | `npm install -g @google/gemini-cli` |
+| [Pi Coding Agent](#pi-coding-agent) | Earendil | v1.3.0 | `npm install -g --ignore-scripts @earendil-works/pi-coding-agent` |
 
 ---
 
@@ -359,6 +360,51 @@ Gemini CLI is an open-source AI agent by Google that brings the power of Gemini 
 
 ---
 
+## Pi Coding Agent
+
+**Version:** v1.3.0
+**Vendor:** Earendil
+**Documentation:** [pi.dev/docs](https://pi.dev/docs/latest)
+**Commands Docs:** [Slash Commands](https://pi.dev/docs/latest/slash-commands)
+**Install:** `npm install -g --ignore-scripts @earendil-works/pi-coding-agent`
+**Requires:** API key or OAuth login for a supported provider (Anthropic, OpenAI, Google, Azure, Bedrock, OpenRouter, and more), or a local model (e.g. Ollama)
+
+Pi is an open-source, minimal terminal coding agent harness. Its core stays small and is extended through extensions, skills, prompt templates, and themes, which can be bundled and shared as Pi packages via npm or git. It runs as an interactive TUI, in print/JSON mode for scripts, over RPC, or embedded via an SDK, supports 15+ model providers with mid-session model switching, and stores sessions as trees that can be branched, exported, or shared.
+
+### Slash Commands
+
+| Command | Description |
+|---------|-------------|
+| `/settings` | Open settings |
+| `/model [provider/model]` | Select a model |
+| `/thinking [level]` | Set the thinking level |
+| `/scoped-models` | Configure the models used by interactive cycling |
+| `/login [provider]` | Add provider authentication |
+| `/logout` | Remove provider authentication |
+| `/llama` | Manage models on the configured llama.cpp router |
+| `/new` | Start a new session |
+| `/resume` | Switch to another saved session |
+| `/name [name]` | Set the session display name, or show the current name when omitted |
+| `/session` | Show current session information and statistics |
+| `/tree` | Navigate the session tree |
+| `/fork` | Create a new session from an earlier user message |
+| `/clone` | Duplicate the current session at its current position |
+| `/compact [instructions]` | Compact the current context, optionally with custom instructions |
+| `/import <path>` | Import and resume a JSONL session |
+| `/copy` | Copy the last assistant message |
+| `/export [path]` | Export the session as HTML or JSONL |
+| `/share` | Upload the session and return a viewer link |
+| `/bug [description]` | Prepare a private bug report for the Pi developers |
+| `/trust` | Save a project trust decision for future Pi processes |
+| `/reload` | Reload keybindings, extensions, skills, templates, themes, and context files |
+| `/hotkeys` | Show active keyboard shortcuts |
+| `/changelog` | Show changelog entries |
+| `/quit` | Quit Pi |
+
+Extensions, prompt templates (`/template-name`), and skills (`/skill:name`) can add more commands.
+
+---
+
 ## Documentation Sources
 
 All content sourced exclusively from official vendor documentation:
@@ -367,3 +413,4 @@ All content sourced exclusively from official vendor documentation:
 - **OpenAI:** [developers.openai.com/codex](https://developers.openai.com/codex/cli/slash-commands)
 - **Anthropic:** [code.claude.com/docs](https://code.claude.com/docs/en/commands)
 - **Google:** [geminicli.com/docs](https://geminicli.com/docs/reference/commands)
+- **Earendil:** [pi.dev/docs](https://pi.dev/docs/latest/slash-commands)

@@ -2,9 +2,9 @@
 name: document-aiclis
 description: >
   Update the AI CLI Quick Reference README.md with the latest versions and slash commands
-  for GitHub Copilot CLI, OpenAI Codex CLI, Claude Code CLI, and Gemini CLI.
+  for GitHub Copilot CLI, OpenAI Codex CLI, Claude Code CLI, Gemini CLI, and Pi Coding Agent.
   Use this skill whenever the user asks to update, refresh, or check the AI CLI documentation,
-  or mentions checking for new versions or commands of any of these 4 CLIs.
+  or mentions checking for new versions or commands of any of these 5 CLIs.
   Also trigger when the user mentions "document-aiclis", "update readme", "check CLI versions",
   or "refresh slash commands".
 ---
@@ -12,7 +12,7 @@ description: >
 # Document AI CLIs Skill
 
 This skill keeps the AI CLI Quick Reference (`README.md`) up to date by checking official vendor
-documentation and the npm registry for the latest versions and slash commands of all 4 supported
+documentation and the npm registry for the latest versions and slash commands of all 5 supported
 AI coding CLIs.
 
 ## When to Run
@@ -21,7 +21,7 @@ AI coding CLIs.
 - When the user asks to update or refresh the CLI documentation
 - When checking if any CLI has released new versions or commands
 
-## The 4 CLIs and Their Vendor Sources
+## The 5 CLIs and Their Vendor Sources
 
 Each CLI has two types of information to check: **version** (from npm) and **slash commands** (from vendor docs).
 
@@ -56,6 +56,18 @@ Each CLI has two types of information to check: **version** (from npm) and **sla
 | Latest version | `https://registry.npmjs.org/@google/gemini-cli/latest` (read the `version` field) |
 | Slash commands | `https://geminicli.com/docs/reference/commands` |
 | General docs | `https://geminicli.com/docs/` |
+
+### 5. Pi Coding Agent (`@earendil-works/pi-coding-agent`)
+
+| What | Where to Check |
+|------|---------------|
+| Latest version | `https://registry.npmjs.org/@earendil-works/pi-coding-agent/latest` (read the `version` field) |
+| Slash commands | `https://pi.dev/docs/latest/slash-commands` |
+| General docs | `https://pi.dev/docs/latest` |
+
+Note: Pi was previously published as `@mariozechner/pi-coding-agent`; that package is no longer
+updated. Only use `@earendil-works/pi-coding-agent`. Only document the built-in commands listed on
+the slash commands page, not commands added by extensions, prompt templates, or skills.
 
 ## Update Procedure
 
@@ -100,7 +112,7 @@ If nothing changed, report that all documentation is current.
 
 - **Vendor docs only**: Never use third-party sources. The npm registry and the vendor documentation
   URLs listed above are the only authoritative sources.
-- **Preserve structure**: The README has a specific format with an index table, 4 sections with
+- **Preserve structure**: The README has a specific format with an index table, 5 sections with
   anchor links, and a documentation sources footer. Keep this structure intact.
 - **Be conservative**: If a vendor doc page is unreachable or returns unexpected content, do not
   remove existing data. Report the issue and skip that CLI's update.
@@ -109,5 +121,5 @@ If nothing changed, report that all documentation is current.
 ## Automation
 
 This skill is designed to be run by the `update-cli-docs.yml` GitHub Actions workflow every
-Sunday at 8pm EST (01:00 UTC Monday). The workflow runs `claude` in non-interactive mode with
+Sunday at 8pm EST (01:00 UTC Monday). The workflow runs `codex exec` in non-interactive mode with
 a prompt that invokes this skill, commits any changes, and pushes to the repository.
